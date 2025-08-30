@@ -50,26 +50,26 @@ const GhiNearbyCities = forwardRef<GHIHandles>((props, ref) => {
     // const responseApiGhi = async () => {
     const handleGHI = useCallback(async () => {
       try {
+        // 1. Remova o bloco 'transformResponse'. Axios fará o parsing automaticamente.
+        const response = await axios.get<DataTotal[]>(`/api/ghi_sedes_munic/`);
 
-        const response = await axios.get<DataTotal[]>(
-          `http://localhost:8000/api/ghi_sedes_munic/`,
-          {
-            transformResponse: (data : string[]): DataTotal[] => {
-              const parsedData:DataTotal[] = JSON.parse(data.toString());
-              console.log(parsedData)
-              return parsedData;
-            }
+        // A partir daqui, 'response.data' já é o seu array de objetos.
+        setResponseJson(response.data);
+        console.log(responseJson)
 
-          });
-        setResponseJson(response.data); 
-        setGhiList(response.data.map((item, index) => { item.fields.id = `${t(`Phase1.Page.Table GHI.Table IDs.p${index}`)}`; item.fields.id_table = item.pk; return item.fields;}));
-        // console.log(response.data);
-        // const teste = response.data.map((item) => { item.fields.id = item.pk; return item.fields;});
-        // setGhiList(teste);
-        // console.log(ghiList);
-      }
-      catch (error) {
-        console.log(error);
+        const formattedGhiList = response.data.map((item, index) => {
+          // 2. Crie um novo objeto em vez de modificar o 'item.fields' original.
+          return {
+            ...item.fields, // Copia todas as propriedades de 'item.fields'
+            id: `${t(`Phase1.Page.Table GHI.Table IDs.p${index}`)}`, // Adiciona/sobrescreve 'id'
+            id_table: item.pk, // Adiciona 'id_table'
+          };
+        });
+
+        setGhiList(formattedGhiList);
+
+      } catch (error) {
+        console.error("Erro ao buscar dados GHI:", error); // Use console.error para erros
       }
     }, [ref]);
     

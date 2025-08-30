@@ -102,7 +102,7 @@ const App = () => {
 
     // const responseAPI =async (params:type) => {
     //   try {
-    //     const response = await axios.get(`http://localhost:8000/api/extracting_data/?lat=${map.position.lat}&lon=${map.position.lng}&n_cities=${distances}`);
+    //     const response = await axios.get(`/api/extracting_data/?lat=${map.position.lat}&lon=${map.position.lng}&n_cities=${distances}`);
     //     console.log(response.data);
     //     setGhiList(response.data);
     //   }
@@ -112,7 +112,7 @@ const App = () => {
     // }
 
     // Promise.all(
-    //   let response = await fetch(`http://localhost:8000/api/extracting_data/?lat=${map.position.lat}&lon=${map.position.lng}&dist=${distance}`);
+    //   let response = await fetch(`/api/extracting_data/?lat=${map.position.lat}&lon=${map.position.lng}&dist=${distance}`);
     //   return await response.json();
     // ).then((values) => {
 

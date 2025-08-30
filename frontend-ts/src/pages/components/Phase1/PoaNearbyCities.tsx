@@ -50,7 +50,7 @@ const PoaNearbyCities = forwardRef<POAHandles>((props, ref) => {
     const handlePOA = useCallback(async () => {
         try {
             const response = await axios.get<ResponseNearbyCities>(
-                `http://localhost:8000/api/extracting_data/`,
+                `/api/extracting_data/`,
                 {
                     transformResponse: (data: string): ResponseNearbyCities => {
                         const parsedData = JSON.parse(data);

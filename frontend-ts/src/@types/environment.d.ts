@@ -4,7 +4,8 @@ declare global{
         interface ProcessEnv {
         //   DB_PORT: number;
         //   DB_USER: string;
-            REACT_APP_GOOGLE_MAPS_API_KEY: string ;
+            REACT_APP_GOOGLE_MAPS_API_KEY: string;
+            REACT_APP_API_URL: string;
         }
     }
 }

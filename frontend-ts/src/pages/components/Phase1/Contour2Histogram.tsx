@@ -19,7 +19,7 @@ const Contour2Histogram = forwardRef<AbacusHandles>((props, ref) => {
     const handleAbacus = useCallback(async () => {
         try {
           const resp = await axios.get(
-            `http://localhost:8000/api/abacuses/`,{
+            `/api/abacuses/`,{
                 timeout: 60000
             }).then((response) => { 
                 console.log(response.data);

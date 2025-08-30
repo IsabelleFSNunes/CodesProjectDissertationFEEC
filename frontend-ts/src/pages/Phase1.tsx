@@ -81,7 +81,7 @@ function Phase1() {
 
     const initialization_api = async () => {
         try {
-            const resp = await axios.get(`http://localhost:8000/api/initializing/?lat=${map.position.lat}&lon=${map.position.lng}&n_cities=3`).then((response) => {
+            const resp = await axios.get(`/api/initializing/?lat=${map.position.lat}&lon=${map.position.lng}&n_cities=3`).then((response) => {
                 console.log(response);
                 // setPlot1(response.data);
             });

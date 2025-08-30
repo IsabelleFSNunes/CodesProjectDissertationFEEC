@@ -11,7 +11,7 @@ import axios from "axios";
 function App() {
 
   // const function_loader = (async {request}) => {
-  //   const clain = axios.get("http://localhost:8000/api/ghi_sedes_munic/");
+  //   const clain = axios.get("/api/ghi_sedes_munic/");
   //   return defer(clain);
   // }
 
