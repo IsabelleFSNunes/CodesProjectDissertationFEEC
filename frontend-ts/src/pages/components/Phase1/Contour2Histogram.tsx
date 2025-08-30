@@ -6,7 +6,7 @@ import { useMap } from '../MapProvider';
 import axios from "axios";
 
 export interface AbacusHandles {
-    handleAbacus: () => void;
+    handleAbacus: (lat: number, lon: number) => void;
   }
 
 // function Contour2Histogram() {
@@ -16,14 +16,18 @@ const Contour2Histogram = forwardRef<AbacusHandles>((props, ref) => {
     const [plot1, setPlot1] = useState<number[]>([]);
     
     // const responseAbacuses = async () => {
-    const handleAbacus = useCallback(async () => {
+    const handleAbacus = useCallback(async (lat: number, lon: number) => {
         try {
           const resp = await axios.get(
             `/api/abacuses/`,{
+                params: {
+                    lat: lat,
+                    lon: lon
+                },
                 timeout: 60000
             }).then((response) => { 
                 console.log(response.data);
-                console.log(map.position.lat, map.position.lng);
+                console.log(lat, lon);
                 setPlot1(response.data);
             });
             console.log(resp);
@@ -31,7 +35,7 @@ const Contour2Histogram = forwardRef<AbacusHandles>((props, ref) => {
         catch (error) {
           console.log(error);
         }
-      },[ref]);
+      },[]);
     
     //   responseAbacuses(); // Call the API
     useImperativeHandle(ref, () => {

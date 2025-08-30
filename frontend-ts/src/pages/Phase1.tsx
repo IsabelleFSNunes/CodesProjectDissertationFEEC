@@ -76,8 +76,8 @@ function Phase1() {
     }, [buttonRefPOA]);
 
     const handleAbacusRender = useCallback(() => {
-        buttonRefAbacus.current?.handleAbacus();
-    }, [buttonRefAbacus]);
+        buttonRefAbacus.current?.handleAbacus(map.position.lat, map.position.lng);
+    }, [buttonRefAbacus, map.position.lat, map.position.lng]);
 
     const initialization_api = async () => {
         try {
