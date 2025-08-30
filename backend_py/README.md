@@ -1,58 +1,57 @@
-# API Django
+# Django API
 
-**Este documento é um guia para interagir com a API do backend da aplicação.**
+**This document is a guide for interacting with the application's backend API.**
 
----
+-----
 
-### **Tabela de Conteúdos**
+### **Table of Contents**
 
-1.  [Estrutura de URLs](#estrutura-de-urls)
-    * [Endpoints da API](#endpoints-da-api)
-    * [Views de Front-end](#views-de-front-end)
-    * [Rota de Administração](#rota-de-administracao)
-2.  [Exemplo de Requisição (com curl)](#exemplo-de-requisicao-com-curl)
-3.  [Requisitos](#requisitos)
-4.  [Execução](#execucao)
+- [Structure](#url-structure)
+    - [API Endpoints](#api-endpoints)
+    - [Front-end Views](#front-end-views)
+    - [Admin Route](#admin-route)
+- [Request Example (with curl)](#request-example-with-curl)
+- [Requirements](https://www.google.com/search?q=%23requirements)
+- [Execution](https://www.google.com/search?q=%23execution)
 
----
+-----
 
-## Estrutura de URLs
+## URL Structure
 
-As URLs da aplicação são definidas no arquivo `urls.py` e estão divididas em rotas para administração, views de front-end e endpoints da API.
+The application's URLs are defined in the `urls.py` file and are divided into routes for administration, front-end views, and API endpoints.
 
-### Endpoints da API
+### API Endpoints
 
-Esses são os endpoints principais que a sua aplicação, como o frontend, irá consumir.
+These are the main endpoints that your application, such as the front-end, will consume.
 
-* `/diffuse/`: Retorna uma lista de dados difusos.
-* `/ghi_sedes_munic/`: Retorna dados de irradiância global horizontal (GHI) para sedes municipais.
-* `/nearby_cities/`: Retorna dados das cidades mais próximas com base em uma coordenada geográfica.
-* `/extracting_data/`: Endpoint para extrair dados de cidades próximas.
-* `/abacuses/`: Fornece dados relacionados aos ábacos da aplicação.
-* `/initializing/`: Usado para a inicialização de dados da aplicação.
+  * `/diffuse/`: Returns a list of diffuse data.
+  * `/ghi_sedes_munic/`: Returns Global Horizontal Irradiance (GHI) data for municipal headquarters.
+  * `/nearby_cities/`: Returns data for the nearest cities based on a geographic coordinate.
+  * `/extracting_data/`: Endpoint for extracting data from nearby cities.
+  * `/abacuses/`: Provides data related to the application's abacuses.
+  * `/initializing/`: Used for initializing application data.
 
----
+-----
 
-### Views de Front-end
+### Front-end Views
 
-Essas rotas são projetadas para renderizar páginas HTML e não para serem consumidas diretamente por outras APIs.
+These routes are designed to render HTML pages and are not meant to be consumed directly by other APIs.
 
-* `/index/`: Rota principal para a página inicial da aplicação.
-* `/home/`: Rota para a página de "home" da aplicação.
-* `/phase1/`: Rota para a "fase 1" da aplicação.
+  * `/index/`: Main route for the application's home page.
+  * `/home/`: Route for the application's "home" page.
+  * `/phase1/`: Route for the application's "phase 1."
 
----
+-----
 
-### Rota de Administração
+### Admin Route
 
-* `/admin/`: Fornece acesso ao painel de administração padrão do Django. É aqui que você pode gerenciar modelos de banco de dados, usuários e outras configurações do site.
+  * `/admin/`: Provides access to the standard Django administration panel. This is where you can manage database models, users, and other site configurations.
 
----
+-----
 
-## Exemplo de Requisição (com `curl`)
+## Request Example (with `curl`)
 
-
-Para interagir com um endpoint que espera dados no formato JSON, como `nearby_cities/`, você pode usar um comando `curl` no seu terminal. Isso é útil para testes e depuração.
+To interact with an endpoint that expects data in JSON format, such as `nearby_cities/`, you can use a `curl` command in your terminal. This is useful for testing and debugging.
 
 ```bash
 curl -X POST \
