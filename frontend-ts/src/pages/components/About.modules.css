@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url("SimpleFooterPages.module.css") footer;
+
+@media all {
+    .footer {order: -1;}
+}

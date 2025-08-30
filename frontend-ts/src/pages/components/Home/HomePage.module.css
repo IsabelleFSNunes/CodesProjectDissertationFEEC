@@ -1,0 +1,9 @@
+.colorbackground {
+    background-color: #f7f8f8;
+    color: #6ad1de;
+    padding: 10px 0;
+    /* bottom: 0; */
+    position: relative;
+    /* text-align: center; */
+    width: 100%;
+}

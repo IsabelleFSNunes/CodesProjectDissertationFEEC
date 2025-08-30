@@ -1,0 +1,47 @@
+.footer {
+    background-color: #1c80cc;
+    color: #fff;
+    padding: 10px 0;
+    bottom: 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.gridTexts {
+    text-align: justify;
+    margin: 0 auto;
+
+}
+
+.socialIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Espaçamento entre os icones de redes sociais */
+.socialIcons li {
+    margin: 0 10px;
+}
+
+/*  */
+.socialIcons li:hover {
+    /* transform: scale(1.1);
+    transition: 0.3s; */
+    color: #ffbb33;
+}
+
+.copy_right {
+    margin-top: 2em;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #1c80cc;
+}
+
+.copy_right span {
+    font-weight: bold;
+}

@@ -1,0 +1,5 @@
+npm install @babel @mui/icons-material  @mui/styled-engine @mui/x-data-grid @mui/lab @mui/material @react-google-maps/api axios eslint eslint-config-react-app react-i18next  webpack-bundle-tracker react-router-dom chart.js chartjs-plugin-zoom csvtojson react-chartjs-2  react-plotly.js --force
+npm i plotly.js@1.47.4 react-slideshow-image
+npm i --save-dev @types/plotly.js @types/react-plotly.js react-slideshow-image
+npm i --save-dev webpack-dev-server
+npm i --save-dev webpack-bundle-tracker 
