@@ -6,7 +6,7 @@ services:
       - ./db:/var/lib/postgresql/data
       - ./database/sql:/docker-entrypoint-initdb.d/
     ports: 
-      - 5432:5432 # Mudei para 5432, que é o padrão. Use 5423 se precisar.
+      - 5423:5432 # Mudei para 5432, que é o padrão. Use 5423 se precisar.
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -30,6 +30,8 @@ services:
     build: ./backend_py
     entrypoint: sh entrypoint.sh
     command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./database:/database
     # A seção 'ports' foi REMOVIDA
     networks:
       - frontend-net
