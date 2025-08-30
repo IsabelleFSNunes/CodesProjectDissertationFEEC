@@ -1,0 +1,61 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+      - ./database/sql:/docker-entrypoint-initdb.d/
+    ports: 
+      - 5432:5432 # Mudei para 5432, que é o padrão. Use 5423 se precisar.
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: MonthlyData
+      # A linha POSTGRES_HOST_AUTH_METHOD foi removida por segurança
+    networks:
+      - backend-net
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -p 5432 -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    build: ./backend_py
+    entrypoint: sh entrypoint.sh
+    command: python manage.py runserver 0.0.0.0:8000
+    # A seção 'ports' foi REMOVIDA
+    networks:
+      - frontend-net
+      - backend-net
+
+  frontend:
+    depends_on: [backend]
+    restart: always
+    build: ./frontend-ts
+    # A seção 'ports' foi REMOVIDA
+    networks:
+      - frontend-net
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80" # ÚNICO ponto de entrada para o tráfego web
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - frontend-net
+      - backend-net
+
+networks:
+  frontend-net:
+  backend-net:
